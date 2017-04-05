@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 public class Servlet extends javax.servlet.http.HttpServlet {
     private ArrayList<String> roomsList = new ArrayList<>(Arrays.asList("8", "112", "BT22", "LAB144"));
+    int check;
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         System.out.println("Hello from the POST Method!");
@@ -19,7 +20,9 @@ public class Servlet extends javax.servlet.http.HttpServlet {
             int duration = Integer.parseInt(request.getParameter("duration")) * 60;
             Timestamp endTime = Meeting.calculateEndTime(startTime, duration);
             Meeting meeting = new Meeting(room, startTime, endTime);
-            MeetingDAO.saveMeeting(meeting);
+            check = MeetingDAO.check(meeting);
+            if (check == 1) MeetingDAO.saveMeeting(meeting);
+            request.setAttribute("check", check);
 
         } else if (request.getParameter("deleteBtn") != null) {
             long id = Long.parseLong(request.getParameter("deleteBtn"));
@@ -32,7 +35,6 @@ public class Servlet extends javax.servlet.http.HttpServlet {
         System.out.println("Hello from the GET Method!");
         request.setAttribute("roomsList", roomsList);
         request.setAttribute("meetings", MeetingDAO.getMeetings());
-
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

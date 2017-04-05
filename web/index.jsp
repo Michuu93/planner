@@ -85,8 +85,23 @@
         </script>
     </form>
 
+
     <!--Meetings List-->
     <h2>Meetings</h2>
+
+    <c:if test="${check} == '1'">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> The meeting was saved.
+        </div>
+    </c:if>
+    <c:if test="${check} == '-1'">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning!</strong> The selected room is occupied during these hours.
+        </div>
+    </c:if>
+
     <table class="table table-hover">
         <thead>
         <tr>

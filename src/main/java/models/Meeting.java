@@ -46,6 +46,8 @@ public class Meeting {
     }
 
     public Timestamp getEndTime() {
+        //SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        //format.parse(String.valueOf(endTime));
         return endTime;
     }
 
