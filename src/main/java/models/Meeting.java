@@ -56,11 +56,11 @@ public class Meeting {
     }
 
     public void setEndTime(Timestamp startTime, int duration) {
-        this.endTime = new Timestamp(startTime.getTime() + (duration * 1000L));
+        this.endTime = new Timestamp(startTime.getTime() + (duration * 1000));
     }
 
     public static Timestamp calculateEndTime(Timestamp startTime, int duration) {
-        Timestamp endTime = new Timestamp(startTime.getTime() + (duration * 1000L));
+        Timestamp endTime = new Timestamp(startTime.getTime() + (duration * 1000));
         return endTime;
     }
 

@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class MeetingDAO {
+
     public static void saveMeeting (Meeting meeting) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -33,7 +34,7 @@ public class MeetingDAO {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("from Meeting");
+        Query query = session.createQuery("from Meeting ORDER BY startTime");
         List<Meeting> meetings = query.getResultList();
 
         session.getTransaction().commit();
@@ -41,26 +42,25 @@ public class MeetingDAO {
         return meetings;
     }
 
-    public static int check (Meeting meeting) {
+    public static boolean check (Meeting meeting) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("SELECT COUNT(*) FROM Meeting WHERE room = :room AND :startT BETWEEN startTime AND endTime OR :endT BETWEEN startTime AND endTime");
+        Query query = session.createQuery("SELECT COUNT(*) FROM Meeting WHERE room = :room AND (:startT BETWEEN startTime AND endTime OR :endT BETWEEN startTime AND endTime OR startTime BETWEEN :startT AND :endT OR endTime BETWEEN :startT AND :endT)");
         query.setParameter("room", meeting.getRoom());
         query.setParameter("startT", meeting.getStartTime());
         query.setParameter("endT", meeting.getEndTime());
 
-        int result;
+        boolean result;
         long count = (long) query.getSingleResult();
         if (count == 0) {
-            result = 1;
+            result = true;
         } else {
-            result = -1;
+            result = false;
         }
 
         session.getTransaction().commit();
         session.close();
-
         return result;
     }
 
