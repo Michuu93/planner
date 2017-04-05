@@ -7,17 +7,17 @@ import java.sql.Timestamp;
 @Table(name = "meetings", schema = "meetings")
 public class Meeting {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "idmeetings")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idmeetings")
     private Long id;
 
-    @Column (name = "room")
+    @Column(name = "room")
     private String room;
 
-    @Column (name = "startTime")
+    @Column(name = "startTime")
     private Timestamp startTime;
 
-    @Column (name = "endTime")
+    @Column(name = "endTime")
     private Timestamp endTime;
 
     public Meeting(String room, Timestamp startTime, Timestamp endTime) {
@@ -46,8 +46,6 @@ public class Meeting {
     }
 
     public Timestamp getEndTime() {
-        //SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        //format.parse(String.valueOf(endTime));
         return endTime;
     }
 

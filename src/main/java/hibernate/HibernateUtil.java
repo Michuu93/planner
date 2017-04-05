@@ -16,8 +16,7 @@ public class HibernateUtil {
             standardServiceRegistryBuilder.applySettings(configuration.getProperties());
 
             return configuration.buildSessionFactory();
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             throw new ExceptionInInitializerError(e);
         }
     }

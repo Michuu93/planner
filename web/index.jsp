@@ -105,16 +105,16 @@
             <tr>
                 <td class="">${meeting.room}</td>
                 <td>
-                    <fmt:parseDate value="${meeting.startTime}" var="startDate" pattern="yyyy-MM-dd HH:mm:ss" />
-                    <fmt:formatDate value="${startDate}" pattern="dd/MM/yyyy" />
+                    <fmt:parseDate value="${meeting.startTime}" var="startDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+                    <fmt:formatDate value="${startDate}" pattern="dd/MM/yyyy"/>
                 </td>
                 <td>
-                        <fmt:parseDate value="${meeting.startTime}" var="startDate" pattern="yyyy-MM-dd HH:mm:ss" />
-                        <fmt:formatDate value="${startDate}" pattern="HH:mm" />
+                    <fmt:parseDate value="${meeting.startTime}" var="startDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+                    <fmt:formatDate value="${startDate}" pattern="HH:mm"/>
                 </td>
                 <td>
-                    <fmt:parseDate value="${meeting.endTime}" var="endDate" pattern="yyyy-MM-dd HH:mm:ss" />
-                    <fmt:formatDate value="${endDate}" pattern="HH:mm" />
+                    <fmt:parseDate value="${meeting.endTime}" var="endDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+                    <fmt:formatDate value="${endDate}" pattern="HH:mm"/>
                 </td>
                 <td>
                     <form method="post">

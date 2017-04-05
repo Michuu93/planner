@@ -1,14 +1,13 @@
 package controllers;
 
 import hibernate.MeetingDAO;
+import hibernate.RoomsDAO;
 import models.Meeting;
+
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Servlet extends javax.servlet.http.HttpServlet {
-    private ArrayList<String> roomsList = new ArrayList<>(Arrays.asList("8", "112", "BT22", "LAB144"));
     private enum Status {
         SUCCESS,
         FAILURE
@@ -40,7 +39,7 @@ public class Servlet extends javax.servlet.http.HttpServlet {
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         System.out.println("Hello from the GET Method!");
-        request.setAttribute("roomsList", roomsList);
+        request.setAttribute("roomsList", RoomsDAO.getRooms());
         request.setAttribute("meetings", MeetingDAO.getMeetings());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

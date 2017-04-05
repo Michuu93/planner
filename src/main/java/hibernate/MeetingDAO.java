@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MeetingDAO {
 
-    public static void saveMeeting (Meeting meeting) {
+    public static void saveMeeting(Meeting meeting) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
@@ -18,7 +18,7 @@ public class MeetingDAO {
         session.close();
     }
 
-    public static void deleteMeeting (long id) {
+    public static void deleteMeeting(long id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
@@ -42,7 +42,7 @@ public class MeetingDAO {
         return meetings;
     }
 
-    public static boolean check (Meeting meeting) {
+    public static boolean check(Meeting meeting) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
