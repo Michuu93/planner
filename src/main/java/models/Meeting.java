@@ -1,47 +1,68 @@
 package models;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = "meetings", schema = "meetings")
 public class Meeting {
-    private final int id;
-    private String sala;
-    private String godzinaRozpoczecia;
-    private String godzinaZakonczenia;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name = "idmeetings")
+    private Long id;
 
-    public Meeting () {
-        this.id = 0;
+    @Column (name = "room")
+    private String room;
+
+    @Column (name = "startTime")
+    private Timestamp startTime;
+
+    @Column (name = "endTime")
+    private Timestamp endTime;
+
+    public Meeting(String room, Timestamp startTime, Timestamp endTime) {
+        this.room = room;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
-    public Meeting(int id, String sala, String godzinaRozpoczecia, String godzinaZakonczenia) {
-        this.id = id;
-        this.sala = sala;
-        this.godzinaRozpoczecia = godzinaRozpoczecia;
-        this.godzinaZakonczenia = godzinaZakonczenia;
+    public Meeting() {
     }
 
-    public int getId() {
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setEndTime(Timestamp startTime, int duration) {
+        this.endTime = new Timestamp(startTime.getTime() + (duration * 1000L));
+    }
+
+    public static Timestamp calculateEndTime(Timestamp startTime, int duration) {
+        Timestamp endTime = new Timestamp(startTime.getTime() + (duration * 1000L));
+        return endTime;
+    }
+
+    public Long getId() {
         return id;
-    }
-
-    public String getSala() {
-        return sala;
-    }
-
-    public void setSala(String sala) {
-        this.sala = sala;
-    }
-
-    public String getGodzinaRozpoczecia() {
-        return godzinaRozpoczecia;
-    }
-
-    public void setGodzinaRozpoczecia(String godzinaRozpoczecia) {
-        this.godzinaRozpoczecia = godzinaRozpoczecia;
-    }
-
-    public String getGodzinaZakonczenia() {
-        return godzinaZakonczenia;
-    }
-
-    public void setGodzinaZakonczenia(String godzinaZakonczenia) {
-        this.godzinaZakonczenia = godzinaZakonczenia;
     }
 }
