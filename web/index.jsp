@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
-    <title>Meeting Planner</title>
+    <title>Meetings Planner</title>
     <link type="text/css" href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="resources/bootstrap-3.3.7-dist/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 </head>

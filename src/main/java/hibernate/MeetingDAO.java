@@ -7,7 +7,6 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class MeetingDAO {
-
     public static void saveMeeting(Meeting meeting) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -63,5 +62,4 @@ public class MeetingDAO {
         session.close();
         return result;
     }
-
 }
